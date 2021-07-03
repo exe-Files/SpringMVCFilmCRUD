@@ -27,9 +27,10 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 		}
 	}
 
+	@Override
 	public Film createFilm(Film film) throws SQLException {
 		Film f = film;
-		String sql = "INSERT INTO film (title, description,release_year, language_id, "
+		String sql = "INSERT INTO film (title, description, language_id, release_year,  "
 				+ "	  rental_duration, rental_rate, length, replacement_cost, rating) "
 				+ "	  VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		Connection conn = null;
@@ -39,18 +40,17 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 			PreparedStatement st = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 			st.setString(1, f.getTitle());
 			st.setString(2, f.getDescription());
-			st.setDate(3, f.getRelease_year());
-			st.setInt(4, f.getLanguage_id());
+			st.setInt(3, f.getLanguage_id());
+			st.setDate(4, f.getRelease_year());
 			st.setInt(5, f.getRental_duration());
 			st.setDouble(6, f.getRental_rate());
 			st.setInt(7, f.getLength());
 			st.setDouble(8, f.getReplacement_cost());
 			st.setString(9, f.getRating());
-//			st.setString(10, f.getSpecial_features());
 			int uc = st.executeUpdate();
-			System.out.println(uc + " actor record created.");
+			System.out.println(uc + " film record created.");
 			if (uc != 1) {
-				System.err.println("Ruh Roh! Looks like we've got to roll back");
+				System.err.println("Oh no, looks like something went wrong. We've got to roll back");
 				conn.rollback();
 				return null;
 			}
@@ -67,8 +67,7 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 			ResultSet rs = st.executeQuery();
 			if (rs.next()) {
 				System.out.println(rs.getInt("id") + " " + rs.getString("title") + " " + rs.getString("description"));
-				System.out.println("Would you like to delete this film?");
-				deleteFilm(film);
+				f.setId(rs.getInt("id")); //sets the original film's ID to the new generated ID
 			}
 
 			conn.commit();
@@ -81,6 +80,7 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 		return f;
 	}
 
+	@Override
 	public boolean deleteFilm(Film film) {
 		Connection conn = null;
 		try {
@@ -90,10 +90,6 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 			PreparedStatement stmt = conn.prepareStatement(sql);
 			stmt.setInt(1, film.getId());
 			int updateCount = stmt.executeUpdate();
-			sql = "DELETE FROM film WHERE id = ?";
-			stmt = conn.prepareStatement(sql);
-			stmt.setInt(1, film.getId());
-			updateCount = stmt.executeUpdate();
 			conn.commit(); // COMMIT TRANSACTION
 		} catch (SQLException sqle) {
 			sqle.printStackTrace();
@@ -109,6 +105,32 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 		return true;
 	}
 
+	public boolean updateFilm(Film film) {
+		Connection conn = null;
+		try {
+			conn = DriverManager.getConnection(URL, user, pass);
+			conn.setAutoCommit(false); // START TRANSACTION
+			String sql = "UPDATE film SET title=?, description=? " + " WHERE id=?";
+			PreparedStatement stmt = conn.prepareStatement(sql);
+			stmt.setString(1, film.getTitle());
+			stmt.setString(2, film.getDescription());
+			stmt.setInt(3, film.getId());
+			int updateCount = stmt.executeUpdate();
+			conn.commit(); // COMMIT TRANSACTION
+		} catch (SQLException sqle) {
+			sqle.printStackTrace();
+			if (conn != null) {
+				try {
+					conn.rollback();
+				} // ROLLBACK TRANSACTION ON ERROR
+				catch (SQLException sqle2) {
+					System.err.println("Error trying to rollback");
+				}
+			}
+			return false;
+		}
+		return true;
+	}
 
 	@Override
 	public Film findFilmById(int filmId) throws SQLException {
@@ -230,4 +252,3 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 	}
 
 }
-
