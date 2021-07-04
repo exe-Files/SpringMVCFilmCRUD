@@ -57,7 +57,7 @@
 								<div>
 									<label for="rental_rate">Rental Rate:</label> <input
 										name="rental_rate" placeholder="Enter rental rate" value=".99"
-										type="number" min="0.00" max="5" step="0.50">
+										type="number" min="0.00" max="5" step="0.01">
 								</div>
 							</div>
 							<div class="d-flex justify-content-between">
@@ -88,7 +88,7 @@
 								<div>
 									<label for="replacement_cost">Replacement cost:</label> <input
 										class="form-control" name="replacement_cost" type="number"
-										value="0.00" step="0.50" min="0" max="20" />
+										value="0.00" step="0.01" min="0" max="20" />
 								</div>
 							</div>
 						</div>
