@@ -15,7 +15,6 @@ public class Film {
 	private int length;
 	private double replacement_cost;
 	private String rating;
-
 	private String special_features;
 	private List<Actor> actors;
 	

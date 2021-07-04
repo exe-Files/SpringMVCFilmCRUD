@@ -42,9 +42,11 @@
 								</tr>
 							</thead>
 							<c:forEach var="userFilm" items="${userFilm}">
-								<tr>
+								<tr data-toggle="collapse" data-target="#demo1" class="accordion-toggle">
 									<th scope="row">${userFilm.id}</th>
-									<td>${userFilm.title}</td>
+									<td>
+									${userFilm.title}
+									</td>
 									<td>
 										<button class="btn btn-outline-dark bi bi-info-circle"
 											type="button" data-bs-toggle="offcanvas"
@@ -54,12 +56,12 @@
 										<div class="offcanvas offcanvas-top" tabindex="-1"
 											id="f${userFilm.id}" aria-labelledby="offcanvasTopLabel">
 											<div class="offcanvas-header">
-								
+
 												<h5 id="offcanvasTopLabel">
-												     Edit:
-	       <!-- NEED CONTROLLER INFO / VIEW FOR HREF  -->
-												     <a aria-label="Edit" href="" class="button bi bi-journal"></a>
-													<h2> ${userFilm.title}</h2>
+													Edit:
+													<!-- NEED CONTROLLER INFO / VIEW FOR HREF  -->
+													<a aria-label="Edit" href="editForm.do?filmId=${userFilm.id}&Keyword=${Keyword}&typeOfSearch=${typeOfSearch}" class="button bi bi-journal"></a>
+													<h2>${userFilm.title}</h2>
 												</h5>
 
 
@@ -112,31 +114,33 @@
 									<td>
 										<button type="button" class="btn bi bi-trash"
 											data-bs-toggle="modal" data-bs-target="#m${userFilm.id}">
-											</button>
-										 <!-- Modal -->
+										</button> <!-- Modal -->
 										<div class="modal fade" id="m${userFilm.id}" tabindex="-1"
 											aria-labelledby="exampleModalLabel" aria-hidden="true">
 											<div class="modal-dialog">
 												<div class="modal-content">
 													<div class="modal-header">
-														<h5 class="modal-title" id="exampleModalLabel">Do you wish to continue?</h5>
+														<h5 class="modal-title" id="exampleModalLabel">Do you
+															wish to continue?</h5>
 														<button type="button" class="btn-close"
 															data-bs-dismiss="modal" aria-label="Close"></button>
 													</div>
-													<div class="modal-body">Are you sure you want to delete <strong>${userFilm.title}</strong></div>
+													<div class="modal-body">
+														Are you sure you want to delete <strong>${userFilm.title}</strong>
+													</div>
 													<div class="modal-footer d-flex justify-content-between">
-										
+
 														<button type="button" class="btn btn-secondary"
 															data-bs-dismiss="modal">Close</button>
-				<!-- NEED PATHING FOR CONTROLLER TO PASS DELETE INFO TO -->
-														<a href="deleteFilm.do?deleteFilmId=${userFilm.id}&Keyword=${Keyword}&typeOfSearch=${typeOfSearch}" class="btn btn-danger">Delete Film</a>
+														<a
+															href="deleteFilm.do?deleteFilmId=${userFilm.id}&Keyword=${Keyword}&typeOfSearch=${typeOfSearch}"
+															class="btn btn-danger">Delete Film</a>
 													</div>
 												</div>
 											</div>
 										</div>
-
 									</td>
-								</tr>
+
 							</c:forEach>
 						</c:when>
 						<c:otherwise>
