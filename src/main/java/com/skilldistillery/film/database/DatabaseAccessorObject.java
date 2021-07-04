@@ -210,6 +210,7 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 		film.setDescription(rs.getString("description"));
 		film.setRelease_year(rs.getString("release_year"));
 		film.setLanguage_id(rs.getInt("language_id"));
+		film.setLanguage_name(rs.getString("language_name"));
 		film.setRental_duration(rs.getInt("rental_duration"));
 		film.setRental_rate(rs.getDouble("rental_rate"));
 		film.setLength(rs.getInt("length"));
@@ -217,7 +218,7 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 		film.setRating(rs.getString("rating"));
 		film.setSpecial_features(rs.getString("special_features"));
 		film.setActors(findActorsByFilmId(rs.getInt("id")));
-		film.setLanguage_name(rs.getString("language_name"));
+		film.setFilm_category(findFilmCategory(rs.getInt("id")));
 		return film;
 	}
 
