@@ -64,6 +64,8 @@ public class FilmController {
 		
 		mv.addAttribute("userFilm", results);
 		mv.addAttribute("badInput", badInput);
+		mv.addAttribute("typeOfSearch", "Id");
+		mv.addAttribute("Keyword", userFilmId);
 		
 		return "lookupResultTable";
 	}
@@ -76,6 +78,8 @@ public class FilmController {
 		} catch (Exception e) {
 		}
 		mv.addAttribute("userFilm", results);
+		mv.addAttribute("Keyword", userSearch);
+		mv.addAttribute("typeOfSearch", "Keyword");
 
 		return "lookupResultTable";
 	}
@@ -105,6 +109,30 @@ public class FilmController {
 	public String filmAdded(Model mv, @ModelAttribute(value = "film") Film film) {
 		mv.addAttribute("userFilm", film);
 		return "addFilmSuccess";
+	}
+	
+	@RequestMapping(path = "deleteFilm.do", params="deleteFilmId")
+	public String deleteFilm(int deleteFilmId, String typeOfSearch, @RequestParam("Keyword") String userSearch, Model mv, RedirectAttributes redir) throws SQLException {
+		boolean deletedFilm = false;
+
+		try {
+			deletedFilm = db.deleteFilm(deleteFilmId);
+		} catch (Exception e) {
+			System.out.println("Something went wrong.");
+		}
+		
+		redir.addFlashAttribute("typeOfSearch", typeOfSearch);
+		redir.addFlashAttribute("deletedFilm", deletedFilm);
+		redir.addFlashAttribute("userSearch", userSearch);
+		return "redirect:filmDeleted.do"; // redirects to new mapping
+	}
+	
+	// PRG - Post Redirect Get
+	@RequestMapping(path = "filmDeleted.do", method = RequestMethod.GET) // mapping to handle Redirect
+	public String filmAdded(Model mv, @ModelAttribute("userSearch") String userSearch, @ModelAttribute("deletedFilm") Boolean deletedFilm, @ModelAttribute("typeOfSearch") String typeOfSearch) {
+		mv.addAttribute("userSearch", userSearch);
+		mv.addAttribute("deletedFilm", deletedFilm);
+		return "deleteResponsePage";
 	}
 
 }
