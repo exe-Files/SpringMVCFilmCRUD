@@ -104,17 +104,26 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 		}
 		return true;
 	}
-
+	// TODO Add fields to update 
 	public boolean updateFilm(Film film) {
 		Connection conn = null;
 		try {
 			conn = DriverManager.getConnection(URL, user, pass);
 			conn.setAutoCommit(false); // START TRANSACTION
-			String sql = "UPDATE film SET title=?, description=? " + " WHERE id=?";
+			String sql = "UPDATE film SET title=?, description=? WHERE id=?";
+//			UPDATE film SET title=?, description=?, release_year=?, language_id=?, rental_duration=?, rental_rate=?, length=?, replacement_cost=?, rating=?, special_features=? where id=?
 			PreparedStatement stmt = conn.prepareStatement(sql);
 			stmt.setString(1, film.getTitle());
 			stmt.setString(2, film.getDescription());
 			stmt.setInt(3, film.getId());
+//			st.setString(3, f.getRelease_year());
+//			st.setInt(4, f.getLanguage_id());
+//			st.setInt(5, f.getRental_duration());
+//			st.setDouble(6, f.getRental_rate());
+//			st.setInt(7, f.getLength());
+//			st.setDouble(8, f.getReplacement_cost());
+//			st.setString(9, f.getRating());
+//			st.setString(10, f.getSpecial_features());
 			int updateCount = stmt.executeUpdate();
 			conn.commit(); // COMMIT TRANSACTION
 		} catch (SQLException sqle) {

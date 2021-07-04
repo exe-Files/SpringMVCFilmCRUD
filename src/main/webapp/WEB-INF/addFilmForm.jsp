@@ -39,6 +39,7 @@
   	</select></label><br>
 	<label for="special_features">Special Features<br> 
 	<textarea name="special_features" rows="4" cols="50" placeholder="Enter Special Features" ></textarea></label><br> 
+	<!-- TODO: Best way to input default values? -->
 	
 	<input type="submit" value="Add Film">
 </form>
