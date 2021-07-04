@@ -1,7 +1,6 @@
 package com.skilldistillery.film.database;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -175,6 +174,7 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 						replacement_cost, rating, special_features);
 				f.setLanguage_name(rs.getString("language"));
 				f.setActors(findActorsByFilmId(filmId));
+				f.setFilm_category(findFilmCategory(filmId));
 			} while (rs.next());
 		}
 		rs.close();
@@ -262,7 +262,35 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 //			System.out.println(
 //					rs.getString("title") + " " + rs.getString("first_name") + " " + rs.getString("last_name"));
 		}
+		rs.close();
+		stmt.close();
+		conn.close();
 		return actorList;
 	}
+	
+	@Override
+	public String findFilmCategory(int filmId) {
+		String category = "";
+		try {
+			Connection conn = DriverManager.getConnection(URL, user, pass);
+			String sql = "SELECT category.name 'category' from film JOIN film_category ON film_category.film_id = film.id JOIN category ON "
+					   + "film_category.category_id = category.id WHERE film.id = ?";
+			PreparedStatement stmt = conn.prepareStatement(sql);
+			stmt.setInt(1, filmId);
+			ResultSet rs = stmt.executeQuery();
+			while (rs.next()) {
+				category = rs.getString("category");
+			}
+			rs.close();
+			stmt.close();
+			conn.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return category;
+	}
 
+//	public void createConnection() throws SQLException {
+//	}
+	
 }

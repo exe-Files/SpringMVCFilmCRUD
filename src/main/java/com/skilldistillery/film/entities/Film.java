@@ -17,6 +17,7 @@ public class Film {
 	private String rating;
 	private String special_features;
 	private List<Actor> actors;
+	private String film_category;
 	
 		
 	public Film() { }
@@ -116,6 +117,12 @@ public class Film {
 	}
 	public void setLanguage_name(String language_name) {
 		this.language_name = language_name;
+	}
+	public String getFilm_category() {
+		return film_category;
+	}
+	public void setFilm_category(String film_category) {
+		this.film_category = film_category;
 	}
 
 	@Override
