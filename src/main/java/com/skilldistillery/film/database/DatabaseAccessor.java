@@ -17,7 +17,7 @@ public interface DatabaseAccessor {
 
 	public Film addFilm(Film film) throws SQLException;
 
-	public boolean deleteFilm(Film film) throws SQLException;
+	public boolean deleteFilm(int filmId) throws SQLException;
 }
 
 //interfaces define the signature, but not the body
