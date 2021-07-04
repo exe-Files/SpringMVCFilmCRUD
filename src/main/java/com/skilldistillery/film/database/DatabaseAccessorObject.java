@@ -28,7 +28,7 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 	}
 
 	@Override
-	public Film createFilm(Film film) throws SQLException {
+	public Film addFilm(Film film) throws SQLException {
 		Film f = film;
 		String sql = "INSERT INTO film (title, description, language_id, release_year,  "
 				+ "	  rental_duration, rental_rate, length, replacement_cost, rating) "

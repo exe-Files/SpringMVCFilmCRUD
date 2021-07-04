@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
 <!DOCTYPE html>
 <html>
@@ -20,12 +20,12 @@
 				</h2>
 			</c:forEach>
 		</c:when>
+		<c:otherwise>
+	    <p>No film found</p>
+  		</c:otherwise>
 	</c:choose>
-		<!-- TODO: Setup no film found -->
 
-
-	<a href="home.do"><button>Go Home</button></a>
-
+	<a href="home.do"><button>Return Home</button></a>
 
 </body>
 </html>

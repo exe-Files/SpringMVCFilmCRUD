@@ -14,7 +14,7 @@
 				<label for="userOption"> <select name="userOption">
 						<option value="filmID">Find Film By ID</option>
 						<option value="filmKeyword">Find Film By Keyword</option>
-						<option value="createFilm">Create new film</option>
+						<option value="addFilm">Add New Film</option>
 				</select>
 				</label>
 				<input type="submit" value="Begin"/> 

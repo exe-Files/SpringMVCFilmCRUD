@@ -59,7 +59,7 @@ public class MVCFilmQueryApp {
 				lookUpFilmByKeyword(input);
 				break;
 			case 3:
-				createNewFilm(input);
+				addNewFilm(input);
 				break;
 			case 4:
 				System.out.println("Thank you, come again.");
@@ -97,19 +97,19 @@ public class MVCFilmQueryApp {
 //		} while (loopAgain);
 //
 //	}
-	private void createNewFilm(Scanner input) throws SQLException {
+	private void addNewFilm(Scanner input) throws SQLException {
 		System.out.println("Adding a film");
 		Film film = new Film();
 		film.setId(1001);
 		film.setTitle("Creature of the Blackjack Lagoon");
-		film.setDescription("A riveting movie about a swamp monster with crippling debt and gambling addiction");
+		film.setDescription("A riveting movie about a swamp monster with crippling debt and a gambling addiction");
 		film.setRelease_year(null);
 		film.setLanguage_id(1);
 		film.setRental_duration(30);
 		film.setRental_rate(3.50);
 		film.setLength(120);
 		film.setReplacement_cost(20.20);
-		film = db.createFilm(film);
+		film = db.addFilm(film);
 		deleteFilm(input, film);
 
 	}

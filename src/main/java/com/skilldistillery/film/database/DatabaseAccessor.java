@@ -15,7 +15,7 @@ public interface DatabaseAccessor {
 	
 	public List<Film> findFilmByKeyword(String keyWord) throws SQLException;
 
-	public Film createFilm(Film film) throws SQLException;
+	public Film addFilm(Film film) throws SQLException;
 
 	public boolean deleteFilm(Film film) throws SQLException;
 }
