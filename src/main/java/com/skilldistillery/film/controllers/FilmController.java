@@ -134,5 +134,19 @@ public class FilmController {
 		mv.addAttribute("deletedFilm", deletedFilm);
 		return "deleteResponsePage";
 	}
+	@RequestMapping(path = "editFilm.do", params="editFilmId")
+	public String editFilm(int editFilmId, Model mv) throws SQLException {
+		Film editFilm = null;
+		
+		try {
+			editFilm = db.findFilmById(editFilmId);
+		} catch (Exception e) {
+			System.out.println("Something went wrong.");
+		}
+		mv.addAttribute("userFilm", editFilm);
+		return "editFilmForm"; // redirects to new mapping
+	}
+	
+
 
 }

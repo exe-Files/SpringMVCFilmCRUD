@@ -60,7 +60,7 @@
 												<h5 id="offcanvasTopLabel">
 													Edit:
 													<!-- NEED CONTROLLER INFO / VIEW FOR HREF  -->
-													<a aria-label="Edit" href="editForm.do?filmId=${userFilm.id}&Keyword=${Keyword}&typeOfSearch=${typeOfSearch}" class="button bi bi-journal"></a>
+													<a aria-label="Edit" href="editFilm.do?editFilmId=${userFilm.id}" class="button bi bi-journal"></a>
 													<h2>${userFilm.title}</h2>
 												</h5>
 
