@@ -38,25 +38,34 @@ public class FilmController {
 			mv.addAttribute("typeOfSearch", "Keyword");
 			return "getFilmForm";
 		} else {
-			return "home.do";
+			return "home";
 		}
 	}
 
 	@RequestMapping(path = "result.do", params = "Id")
-	public String searchForFilmById(@RequestParam("Id") int userFilmId, Model mv) {
+	public String searchForFilmById(@RequestParam("Id") String userFilmId, Model mv) {
+
 		List<Film> results = new ArrayList<>();
 		Film singleResult = null;
-		System.out.println(userFilmId);
+		String badInput = null;
+
 		try {
-			singleResult = db.findFilmById(userFilmId);
+			int userFilmIdInt = Integer.parseInt(userFilmId);
+			singleResult = db.findFilmById(userFilmIdInt);
 		} catch (SQLException e) {
 			e.printStackTrace();
+			
+		} catch (NumberFormatException nfe) {
+			badInput = "Provided invalid ID.";
 		}
 		if (singleResult != null) {
 			results.add(singleResult);
 		}
+		
 		mv.addAttribute("userFilm", results);
-		return "lookupResult";
+		mv.addAttribute("badInput", badInput);
+		
+		return "lookupResultTable";
 	}
 
 	@RequestMapping(path = "result.do", params = "Keyword")
@@ -67,8 +76,8 @@ public class FilmController {
 		} catch (Exception e) {
 		}
 		mv.addAttribute("userFilm", results);
-		System.out.println(results);
-		return "lookupResult";
+
+		return "lookupResultTable";
 	}
 
 	// mapping for film creation command object
@@ -77,26 +86,25 @@ public class FilmController {
 	// Any fields not present are set to their defaults.
 
 	@RequestMapping(path = "addFilm.do", method = RequestMethod.POST)
-	public String addFilm(Film film, Model mv,  RedirectAttributes redir)
-			throws SQLException {
-		List<Film> results = new ArrayList<>();;
+	public String addFilm(Film film, Model mv, RedirectAttributes redir) throws SQLException {
+		List<Film> results = new ArrayList<>();
+		;
 //		Film results = null;
 		try {
 			results.add(db.addFilm(film));
 		} catch (Exception e) {
 			System.out.println("Something went wrong.");
 		}
-		mv.addAttribute("userFilm", results); 
-		redir.addFlashAttribute("film", results); 
-		System.out.println(results);
+		mv.addAttribute("userFilm", results);
+		redir.addFlashAttribute("film", results);
 		return "redirect:filmAdded.do"; // redirects to new mapping
 	}
 
 	// PRG - Post Redirect Get
-	@RequestMapping(path = "filmAdded.do", method = RequestMethod.GET ) // mapping to handle Redirect
-	public String filmAdded(Model mv, @ModelAttribute(value="film") List<Film> film) {
-		mv.addAttribute("userFilm", film); 
-		return "lookupResult";
+	@RequestMapping(path = "filmAdded.do", method = RequestMethod.GET) // mapping to handle Redirect
+	public String filmAdded(Model mv, @ModelAttribute(value = "film") Film film) {
+		mv.addAttribute("userFilm", film);
+		return "addFilmSuccess";
 	}
 
 }
