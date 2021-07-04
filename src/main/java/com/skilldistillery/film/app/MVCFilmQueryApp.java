@@ -110,11 +110,11 @@ public class MVCFilmQueryApp {
 		film.setLength(120);
 		film.setReplacement_cost(20.20);
 		film = db.addFilm(film);
-		deleteFilm(input, film);
+		deleteFilm(input, film.getId());
 
 	}
 
-	private void deleteFilm(Scanner input, Film film) throws SQLException {
+	private void deleteFilm(Scanner input, int film) throws SQLException {
 		System.out.println("Would you like to delete this film?");
 		input.nextLine(); // clears the buffer
 		String userInput = input.nextLine();
@@ -161,8 +161,8 @@ public class MVCFilmQueryApp {
 		for (Actor a : film.getActors()) {
 			System.out.println("- " + a.getFirstName() + " " + a.getLastName());
 		}
-		deleteFilm(input, film);
-		System.out.println();
+		System.out.println(film.getFilm_category());
+
 	}
 
 }

@@ -18,6 +18,8 @@ public interface DatabaseAccessor {
 	public Film addFilm(Film film) throws SQLException;
 
 	public boolean deleteFilm(int filmId) throws SQLException;
+
+	String findFilmCategory(int filmId);
 }
 
 //interfaces define the signature, but not the body
