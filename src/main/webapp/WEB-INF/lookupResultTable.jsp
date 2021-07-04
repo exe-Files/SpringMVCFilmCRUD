@@ -129,7 +129,7 @@
 														<button type="button" class="btn btn-secondary"
 															data-bs-dismiss="modal">Close</button>
 				<!-- NEED PATHING FOR CONTROLLER TO PASS DELETE INFO TO -->
-														<a href="" class="btn btn-danger">Delete Film</a>
+														<a href="deleteFilm.do?deleteFilmId=${userFilm.id}&Keyword=${Keyword}&typeOfSearch=${typeOfSearch}" class="btn btn-danger">Delete Film</a>
 													</div>
 												</div>
 											</div>
