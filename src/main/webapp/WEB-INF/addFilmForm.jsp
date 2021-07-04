@@ -15,11 +15,13 @@
 </head>
 
 <body>
+<div class="container mx-auto d-flex flex-column vh-100 w-75 mx-auto text-center justify-content-center">
+		<div class="w-50 mx-auto border p-4 form-border">
 <h1>Add a Film</h1>
 <form action="addFilm.do" method="POST" >
-	<label for="title">Film Title: </label><input name="title" placeholder="Enter Film Title"><br>
+	<label for="title">Film Title: </label><input name="title" class="form-control input-sm" placeholder="Enter Film Title"><br>
 	<label for="description">Film Description: <br>
-	<textarea name="description" rows="4" cols="50" placeholder="Enter Film Description" ></textarea></label><br>
+	<textarea name="description" style="width:100%" placeholder="Enter Film Description" rows="3" ></textarea></label><br>
 	<label for="release_year">Release Year: </label><input name="release_year" type="number" min="1900" max="2099" step="1" value="1950"><br>
 	<label for="language_id">Language ID:
   	<select name="language_id" class="form-control" id="language_id">
@@ -52,8 +54,10 @@
 	</select></label><br>
 	<!-- TODO: Best way to input default values? -->
 
-	<input type="submit" value="Add Film">
+	<button class="btn btn-outline-dark" type="submit" value="Add Film">Submit</button>
 </form>
+</div>
+</div>
 
 <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

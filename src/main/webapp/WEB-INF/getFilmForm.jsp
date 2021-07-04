@@ -29,7 +29,7 @@
 						placeholder="Enter Film ${typeOfSearch}"
 						aria-describedby="basic-addon2">
 					<div class="input-group-append">
-						<button class="btn btn-outline-dark" type="submit">Button</button>
+						<button class="btn btn-outline-dark" type="submit">Submit</button>
 					</div>
 				</div>
 			</form>
