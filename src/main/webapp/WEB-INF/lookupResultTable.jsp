@@ -20,7 +20,6 @@
 <body>
 	<a href="home.do"><button class="btn btn-dark mt-1 fixed-top">Go
 			Home</button></a>
-
 	<div
 		class="container vh-100 d-flex flex-column justify-content-center ">
 		<div>
@@ -42,7 +41,7 @@
 								</tr>
 							</thead>
 							<c:forEach var="userFilm" items="${userFilm}">
-								<tr data-toggle="collapse" data-target="#demo1" class="accordion-toggle">
+								<tr data-toggle="collapse" data-target="#demo1" class="accordion-toggle"></tr>
 									<th scope="row">${userFilm.id}</th>
 									<td>
 									${userFilm.title}
@@ -155,13 +154,9 @@
 						</c:otherwise>
 					</c:choose>
 				</tbody>
-
 			</table>
 		</div>
-
-
-
-
+</div>
 		<script
 			src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
 			integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
