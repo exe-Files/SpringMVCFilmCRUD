@@ -30,8 +30,8 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 	public Film addFilm(Film film) throws SQLException {
 		Film f = film;
 		String sql = "INSERT INTO film (title, description, language_id, release_year,  "
-				+ "	  rental_duration, rental_rate, length, replacement_cost, rating) "
-				+ "	  VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+				+ "	  rental_duration, rental_rate, length, replacement_cost, rating, special_features) "
+				+ "	  VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		Connection conn = null;
 		try {
 			conn = DriverManager.getConnection(URL, user, pass);
@@ -46,6 +46,7 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 			st.setInt(7, f.getLength());
 			st.setDouble(8, f.getReplacement_cost());
 			st.setString(9, f.getRating());
+			st.setString(10, f.getSpecial_features());
 			int uc = st.executeUpdate();
 			System.out.println(uc + " film record added.");
 			if (uc != 1) {
