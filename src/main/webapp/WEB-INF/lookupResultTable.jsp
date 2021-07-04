@@ -71,7 +71,7 @@
 											<div class="offcanvas-body">
 												<div class="row">
 													<div class="col">
-														<h3>Descripton:</h3>
+														<h3>Description:</h3>
 														<p>${userFilm.description}</p>
 														<div class="d-flex w-50 justify-content-between">
 															<h5>Rating:</h5>
@@ -92,6 +92,10 @@
 														<div class="d-flex w-50 justify-content-between">
 															<h5>Special Features:</h5>
 															<p>${userFilm.special_features}</p>
+														</div>
+														<div class="d-flex w-50 justify-content-between">
+															<h5>Category:</h5>
+															<p>${userFilm.film_category}</p>
 														</div>
 
 													</div>
