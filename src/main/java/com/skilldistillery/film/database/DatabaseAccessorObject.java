@@ -48,7 +48,7 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 			st.setDouble(8, f.getReplacement_cost());
 			st.setString(9, f.getRating());
 			int uc = st.executeUpdate();
-			System.out.println(uc + " film record created.");
+			System.out.println(uc + " film record added.");
 			if (uc != 1) {
 				System.err.println("Oh no, looks like something went wrong. We've got to roll back");
 				conn.rollback();
@@ -67,7 +67,7 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 			ResultSet rs = st.executeQuery();
 			if (rs.next()) {
 				System.out.println(rs.getInt("id") + " " + rs.getString("title") + " " + rs.getString("description"));
-				f.setId(rs.getInt("id")); //sets the original film's ID to the new generated ID
+				f.setId(rs.getInt("id")); // sets the original film's ID to the new generated ID
 			}
 
 			conn.commit();
@@ -90,6 +90,7 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 			PreparedStatement stmt = conn.prepareStatement(sql);
 			stmt.setInt(1, film.getId());
 			int updateCount = stmt.executeUpdate();
+			System.out.println(updateCount + " film record deleted.");
 			conn.commit(); // COMMIT TRANSACTION
 		} catch (SQLException sqle) {
 			sqle.printStackTrace();
@@ -104,27 +105,31 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 		}
 		return true;
 	}
-	// TODO Add fields to update 
+
+	// TODO Add fields to update
 	public boolean updateFilm(Film film) {
 		Connection conn = null;
 		try {
 			conn = DriverManager.getConnection(URL, user, pass);
 			conn.setAutoCommit(false); // START TRANSACTION
-			String sql = "UPDATE film SET title=?, description=? WHERE id=?";
-//			UPDATE film SET title=?, description=?, release_year=?, language_id=?, rental_duration=?, rental_rate=?, length=?, replacement_cost=?, rating=?, special_features=? where id=?
+//			String sql = "UPDATE film SET title=?, description=? WHERE id=?";
+			String sql = "UPDATE film SET title=?, description=?, release_year=?,"
+					+" language_id=?, rental_duration=?, rental_rate=?, length=?,"
+					+" replacement_cost=?, rating=?, special_features=? WHERE id=?";
 			PreparedStatement stmt = conn.prepareStatement(sql);
 			stmt.setString(1, film.getTitle());
 			stmt.setString(2, film.getDescription());
-			stmt.setInt(3, film.getId());
-//			st.setString(3, f.getRelease_year());
-//			st.setInt(4, f.getLanguage_id());
-//			st.setInt(5, f.getRental_duration());
-//			st.setDouble(6, f.getRental_rate());
-//			st.setInt(7, f.getLength());
-//			st.setDouble(8, f.getReplacement_cost());
-//			st.setString(9, f.getRating());
-//			st.setString(10, f.getSpecial_features());
+//			stmt.setInt(3, film.getId());
+			stmt.setString(3, film.getRelease_year());
+			stmt.setInt(4, film.getLanguage_id());
+			stmt.setInt(5, film.getRental_duration());
+			stmt.setDouble(6, film.getRental_rate());
+			stmt.setInt(7, film.getLength());
+			stmt.setDouble(8, film.getReplacement_cost());
+			stmt.setString(9, film.getRating());
+			stmt.setString(10, film.getSpecial_features());
 			int updateCount = stmt.executeUpdate();
+			System.out.println(updateCount + " film record deleted.");
 			conn.commit(); // COMMIT TRANSACTION
 		} catch (SQLException sqle) {
 			sqle.printStackTrace();
