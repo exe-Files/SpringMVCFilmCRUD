@@ -41,7 +41,7 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 			st.setString(1, f.getTitle());
 			st.setString(2, f.getDescription());
 			st.setInt(3, f.getLanguage_id());
-			st.setDate(4, f.getRelease_year());
+			st.setString(4, f.getRelease_year());
 			st.setInt(5, f.getRental_duration());
 			st.setDouble(6, f.getRental_rate());
 			st.setInt(7, f.getLength());
@@ -148,7 +148,7 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 				int id = rs.getInt("id");
 				String title = rs.getString("title");
 				String description = rs.getString("description");
-				Date release_year = rs.getDate("release_year");
+				String release_year = rs.getString("release_year");
 				int language_id = rs.getInt("language_id");
 				int rental_duration = rs.getInt("rental_duration");
 				double rental_rate = rs.getDouble("rental_rate");
@@ -194,7 +194,7 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 		film.setId(rs.getInt("id"));
 		film.setTitle(rs.getString("title"));
 		film.setDescription(rs.getString("description"));
-		film.setRelease_year(rs.getDate("release_year"));
+		film.setRelease_year(rs.getString("release_year"));
 		film.setLanguage_id(rs.getInt("language_id"));
 		film.setRental_duration(rs.getInt("rental_duration"));
 		film.setRental_rate(rs.getDouble("rental_rate"));
