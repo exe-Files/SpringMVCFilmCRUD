@@ -14,7 +14,7 @@
 <form action="addFilm.do" method="POST" >
 	<label for="title">Film Title: <input name="title" placeholder="Enter Film Title"></label><br>
 	<label for="description">Film Description: <br> 
-		<textarea name="description" rows="4" cols="50" placeholder="Enter Film Description"></textarea></label><br> 
+	<textarea name="description" rows="4" cols="50" placeholder="Enter Film Description"></textarea></label><br> 
 	<!-- <label for="release_year">Release Year: <input name="release_year" placeholder="Enter Film Release Year"></label><br> -->
 	<label for="language_id">Language ID: <input name="language_id" placeholder="Enter language ID"></label><br>
 	<!-- <label for="rental_duration">Rental Duration: <input name="rental_duration" placeholder="Enter rental duration"></label><br>
