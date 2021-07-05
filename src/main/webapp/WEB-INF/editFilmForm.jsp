@@ -48,6 +48,11 @@
 										name="rental_duration" type="number" min="3" max="7"
 										placeholder="Select rental duration" value="${userFilm.rental_duration}">
 								</div>
+								
+								<div>
+									<label for="id">Film id:</label> <input readonly
+										name="id" type="number" value="${userFilm.id}">
+								</div>
 
 								<div>
 									<label for="release_year">Release Year:</label> <input

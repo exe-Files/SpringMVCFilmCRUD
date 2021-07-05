@@ -154,6 +154,7 @@ public class FilmController {
 	@RequestMapping(path = "editedFilm.do", method = RequestMethod.POST)
 	public String editFilm(Film editFilm, Model mv, RedirectAttributes redir) throws SQLException {
 		boolean editedFilmResult = false;
+		System.out.println(editFilm);
 		try {
 			editedFilmResult = db.updateFilm(editFilm);
 		} catch (Exception e) {
