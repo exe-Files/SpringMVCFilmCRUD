@@ -20,7 +20,7 @@
 	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
 <link href="css/homeStyles.css" rel="stylesheet">
 </head>
-<title></title>
+<title>Edit a Film</title>
 </head>
 
 <body>
@@ -31,11 +31,11 @@
 		<div class="container vh-100 d-flex flex-column justify-content-center">
 			<div class="border p-3 form-border border-dark">
 				<h1 class="text-center">Edit ${userFilm.title}</h1>
-				<form action="" method="POST">
+				<form action="editedFilm.do" method="POST">
 					<div class="row">
 						<div class="mb-3">
 							<div>
-								<label for="title"">Film Title: </label> <input name="title"
+								<label for="title">Film Title: </label> <input name="title"
 									class="form-control input-sm" value="${userFilm.title}">
 							</div>
 							<div>
@@ -52,12 +52,12 @@
 								<div>
 									<label for="release_year">Release Year:</label> <input
 										name="release_year" type="number" min="1900" max="2099"
-										step="1" value="1950" />
+										step="1" value="1980" />
 								</div>
 								<div>
 									<label for="rental_rate">Rental Rate:</label> <input
 										name="rental_rate" placeholder="Enter rental rate" value="${userFilm.rental_rate}"
-										type="number" min="0.00" max="5" step="0.01">
+										type="number" min="0.00" max="4.99" step="0.01">
 								</div>
 							</div>
 							<div class="d-flex justify-content-between">
@@ -88,7 +88,7 @@
 								<div>
 									<label for="replacement_cost">Replacement cost:</label> <input
 										class="form-control" name="replacement_cost" type="number"
-										value="${userFilm.replacement_cost}" step="0.01" min="0" max="20" />
+										value="${userFilm.replacement_cost}" step="0.01" min="0" max="19.99" />
 								</div>
 							</div>
 						</div>

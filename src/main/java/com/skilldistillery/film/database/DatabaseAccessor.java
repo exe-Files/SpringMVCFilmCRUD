@@ -19,7 +19,9 @@ public interface DatabaseAccessor {
 
 	public boolean deleteFilm(int filmId) throws SQLException;
 
-	String findFilmCategory(int filmId);
+	public boolean updateFilm(Film film);
+
+	public String findFilmCategory(int filmId);
 }
 
 //interfaces define the signature, but not the body

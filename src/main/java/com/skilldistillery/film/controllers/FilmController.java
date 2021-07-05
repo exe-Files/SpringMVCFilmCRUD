@@ -54,19 +54,19 @@ public class FilmController {
 			singleResult = db.findFilmById(userFilmIdInt);
 		} catch (SQLException e) {
 			e.printStackTrace();
-			
+
 		} catch (NumberFormatException nfe) {
 			badInput = "Provided invalid ID.";
 		}
 		if (singleResult != null) {
 			results.add(singleResult);
 		}
-		
+
 		mv.addAttribute("userFilm", results);
 		mv.addAttribute("badInput", badInput);
 		mv.addAttribute("typeOfSearch", "Id");
 		mv.addAttribute("Keyword", userFilmId);
-		
+
 		return "lookupResultTable";
 	}
 
@@ -99,7 +99,7 @@ public class FilmController {
 		} catch (Exception e) {
 			System.out.println("Something went wrong.");
 		}
-		mv.addAttribute("userFilm", results);
+//		mv.addAttribute("userFilm", results);
 		redir.addFlashAttribute("film", results);
 		return "redirect:filmAdded.do"; // redirects to new mapping
 	}
@@ -108,11 +108,12 @@ public class FilmController {
 	@RequestMapping(path = "filmAdded.do", method = RequestMethod.GET) // mapping to handle Redirect
 	public String filmAdded(Model mv, @ModelAttribute(value = "film") Film film) {
 		mv.addAttribute("userFilm", film);
-		return "addFilmSuccess";
+		return "addFilmResponse";
 	}
-	
-	@RequestMapping(path = "deleteFilm.do", params="deleteFilmId")
-	public String deleteFilm(int deleteFilmId, String typeOfSearch, @RequestParam("Keyword") String userSearch, Model mv, RedirectAttributes redir) throws SQLException {
+
+	@RequestMapping(path = "deleteFilm.do", params = "deleteFilmId")
+	public String deleteFilm(int deleteFilmId, String typeOfSearch, @RequestParam("Keyword") String userSearch,
+			Model mv, RedirectAttributes redir) throws SQLException {
 		boolean deletedFilm = false;
 
 		try {
@@ -120,25 +121,26 @@ public class FilmController {
 		} catch (Exception e) {
 			System.out.println("Something went wrong.");
 		}
-		
+
 		redir.addFlashAttribute("typeOfSearch", typeOfSearch);
 		redir.addFlashAttribute("deletedFilm", deletedFilm);
 		redir.addFlashAttribute("userSearch", userSearch);
 		return "redirect:filmDeleted.do"; // redirects to new mapping
 	}
-	
+
 	// PRG - Post Redirect Get
 	@RequestMapping(path = "filmDeleted.do", method = RequestMethod.GET) // mapping to handle Redirect
-	public String filmAdded(Model mv, @ModelAttribute("userSearch") String userSearch, @ModelAttribute("deletedFilm") Boolean deletedFilm, @ModelAttribute("typeOfSearch") String typeOfSearch) {
+	public String filmAdded(Model mv, @ModelAttribute("userSearch") String userSearch,
+			@ModelAttribute("deletedFilm") Boolean deletedFilm, @ModelAttribute("typeOfSearch") String typeOfSearch) {
 		mv.addAttribute("userSearch", userSearch);
 		mv.addAttribute("deletedFilm", deletedFilm);
 		return "deleteResponsePage";
 	}
 	
-	@RequestMapping(path = "editFilm.do", params="editFilmId")
+	//Takes selected film and passes values to edit film form
+	@RequestMapping(path = "editFilm.do", params = "editFilmId")
 	public String editFilm(int editFilmId, Model mv) throws SQLException {
 		Film editFilm = null;
-		
 		try {
 			editFilm = db.findFilmById(editFilmId);
 		} catch (Exception e) {
@@ -148,6 +150,26 @@ public class FilmController {
 		return "editFilmForm"; // redirects to new mapping
 	}
 	
+	//edit film form is submitted, command object is created based on the form, parsed for new values, db is updated
+	@RequestMapping(path = "editedFilm.do", method = RequestMethod.POST)
+	public String editFilm(Film editFilm, Model mv, RedirectAttributes redir) throws SQLException {
+		boolean editedFilmResult = false;
+		try {
+			editedFilmResult = db.updateFilm(editFilm);
+		} catch (Exception e) {
+			System.out.println("Something went wrong.");
+		}
+//		redir.addFlashAttribute("typeOfSearch", typeOfSearch);
+//		redir.addFlashAttribute("userSearch", userSearch);
+		redir.addFlashAttribute("result", editedFilmResult);
+		return "redirect:filmEdited.do"; // redirects to new mapping
+	}
 
+	// PRG - Post Redirect Get
+	@RequestMapping(path = "filmEdited.do", method = RequestMethod.GET) // mapping to handle Redirect
+	public String filmEdited(Model mv, @ModelAttribute("result") boolean editedFilm) {
+		mv.addAttribute("editedFilm", editedFilm);
+		return "editResponsePage";
+	}
 
 }

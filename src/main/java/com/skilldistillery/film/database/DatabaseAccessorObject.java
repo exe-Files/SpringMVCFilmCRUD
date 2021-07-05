@@ -107,6 +107,7 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 	}
 
 	// TODO Add fields to update
+	@Override
 	public boolean updateFilm(Film film) {
 		Connection conn = null;
 		try {
@@ -128,8 +129,9 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 			stmt.setDouble(8, film.getReplacement_cost());
 			stmt.setString(9, film.getRating());
 			stmt.setString(10, film.getSpecial_features());
+			stmt.setInt(11, film.getId());
 			int updateCount = stmt.executeUpdate();
-			System.out.println(updateCount + " film record deleted.");
+			System.out.println(updateCount + " film record updated.");
 			conn.commit(); // COMMIT TRANSACTION
 		} catch (SQLException sqle) {
 			sqle.printStackTrace();
