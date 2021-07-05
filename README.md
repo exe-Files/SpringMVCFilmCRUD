@@ -19,7 +19,7 @@ This program presents a web page to a user, allowing them to search through a SQ
 
 
 ### How to Run
-In order to run, you must be running a version of Java 1.8 or later
+In order to run, you must be running a version of Java 1.8 or later.
 When ran, the program will prompt the user for input based on how they would like to search the database of films
 Based on whether the user chooses to search based on the ID number or keyword, the program will request the appropriate search criteria.
 Once satisfied with an appropriate response, the program will use the input to search the SQL database, pull data relating to the search, and create a film object based on the result table's columns.

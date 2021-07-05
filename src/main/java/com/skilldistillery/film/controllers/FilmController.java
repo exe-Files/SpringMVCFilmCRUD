@@ -44,11 +44,9 @@ public class FilmController {
 
 	@RequestMapping(path = "result.do", params = "Id")
 	public String searchForFilmById(@RequestParam("Id") String userFilmId, Model mv) {
-
 		List<Film> results = new ArrayList<>();
 		Film singleResult = null;
 		String badInput = null;
-
 		try {
 			int userFilmIdInt = Integer.parseInt(userFilmId);
 			singleResult = db.findFilmById(userFilmIdInt);
@@ -92,7 +90,6 @@ public class FilmController {
 	@RequestMapping(path = "addFilm.do", method = RequestMethod.POST)
 	public String addFilm(Film film, Model mv, RedirectAttributes redir) throws SQLException {
 		List<Film> results = new ArrayList<>();
-		;
 //		Film results = null;
 		try {
 			results.add(db.addFilm(film));
