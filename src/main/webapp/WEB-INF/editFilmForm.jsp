@@ -45,7 +45,7 @@
 							<div class="mt-3 mb-2 d-flex justify-content-between">
 								<div>
 									<label for="rental_duration">Rental Duration:</label> <input
-										name="rental_duration" type="number" min="3" max="7"
+										name="rental_duration" type="number" min="1" max="30"
 										placeholder="Select rental duration" value="${userFilm.rental_duration}">
 								</div>
 								
@@ -62,7 +62,7 @@
 								<div>
 									<label for="rental_rate">Rental Rate:</label> <input
 										name="rental_rate" placeholder="Enter rental rate" value="${userFilm.rental_rate}"
-										type="number" min="0.00" max="4.99" step="0.01">
+										type="number" min="0.00" max="99.99" step="0.01">
 								</div>
 							</div>
 							<div class="d-flex justify-content-between">
@@ -93,7 +93,7 @@
 								<div>
 									<label for="replacement_cost">Replacement cost:</label> <input
 										class="form-control" name="replacement_cost" type="number"
-										value="${userFilm.replacement_cost}" step="0.01" min="0" max="19.99" />
+										value="${userFilm.replacement_cost}" step="0.01" min="0" max="999.99" />
 								</div>
 							</div>
 						</div>
@@ -112,7 +112,7 @@
 						<div class="col">
 							<label for="length">Film Length:</label> <input name="length"
 								class="form-control" type="number"
-								placeholder="Enter film length" value="${userFilm.length}" />
+								placeholder="Enter film length" min="0" max="9999" value="${userFilm.length}" />
 						</div>
 					</div>
 					<div class="text-center">
