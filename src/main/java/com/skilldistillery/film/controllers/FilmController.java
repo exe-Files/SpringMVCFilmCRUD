@@ -160,15 +160,13 @@ public class FilmController {
 		} catch (Exception e) {
 			System.out.println("Something went wrong.");
 		}
-//		redir.addFlashAttribute("typeOfSearch", typeOfSearch);
-//		redir.addFlashAttribute("userSearch", userSearch);
-		redir.addFlashAttribute("result", editedFilmResult);
+		redir.addFlashAttribute("editedFilm", editedFilmResult);
 		return "redirect:filmEdited.do"; // redirects to new mapping
 	}
 
 	// PRG - Post Redirect Get
 	@RequestMapping(path = "filmEdited.do", method = RequestMethod.GET) // mapping to handle Redirect
-	public String filmEdited(Model mv, @ModelAttribute("result") boolean editedFilm) {
+	public String filmEdited(Model mv, @ModelAttribute("editedFilm") boolean editedFilm) {
 		mv.addAttribute("editedFilm", editedFilm);
 		return "editResponsePage";
 	}

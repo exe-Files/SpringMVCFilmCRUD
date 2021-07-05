@@ -50,7 +50,7 @@
 								</div>
 								
 								<div>
-									<label for="id">Film id:</label> <input readonly
+									<label for="id">Film id:</label> <input readonly 
 										name="id" type="number" value="${userFilm.id}">
 								</div>
 
@@ -100,7 +100,7 @@
 					</div>
 					<div class="row">
 						<div class="col">
-							<label for="special_features">Special Features</label> <select
+							<label for="special_features">Special Features:</label> <select
 								name="special_features" class="form-control"
 								id="special_features">
 								<option value="Trailers">Trailers</option>

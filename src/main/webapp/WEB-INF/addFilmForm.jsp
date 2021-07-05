@@ -33,14 +33,16 @@
 				<form action="addFilm.do" method="POST">
 					<div class="row">
 						<div class="mb-3">
-							<label for="title">Film Title: </label><input name="title"
-								class="form-control input-sm" placeholder="Enter Film Title"
-								required>
-						</div>
-						<div>
-							<label for="description">Film Description: </label>
-							<textarea name="description" class="form-control w-100"
-								placeholder="Enter Film Description" required></textarea>
+							<div>
+								<label for="title">Film Title: </label><input name="title"
+									class="form-control input-sm" placeholder="Enter Film Title"
+									required>
+							</div>
+							<div>
+								<label for="description">Film Description: </label>
+								<textarea name="description" class="form-control w-100"
+									placeholder="Enter Film Description" required></textarea>
+							</div>
 						</div>
 						<div class="mt-3 mb-2 d-flex justify-content-between">
 							<div>
@@ -51,7 +53,7 @@
 							<div>
 								<label for="release_year">Release Year: </label><input
 									name="release_year" type="number" min="1900" max="2099"
-									step="1" value="1980" /> 
+									step="1" value="1980" />
 							</div>
 							<div>
 								<label for="rental_rate">Rental Rate: </label><input
@@ -61,8 +63,8 @@
 						</div>
 						<div class="d-flex justify-content-between">
 							<div class="w-50">
-								<label for="language_id">Language</label> ID: <select 
-									class="form-control w-75" name="language_id" 
+								<label for="language_id">Language</label> ID: <select
+									class="form-control w-75" name="language_id"
 									class="form-control" id="language_id">
 									<option value=1>1. English</option>
 									<option value=2>2. Italian</option>
@@ -85,8 +87,9 @@
 							</div>
 							<div>
 								<label for="replacement_cost">Replacement cost: </label><input
-									class="form-control" name="replacement_cost" placeholder="Enter replacement cost"
-									type="number" value="0.00" step="0.01" min="0" max="19.99">
+									class="form-control" name="replacement_cost"
+									placeholder="Enter replacement cost" type="number" value="0.00"
+									step="0.01" min="0" max="19.99">
 							</div>
 						</div>
 					</div>
@@ -96,14 +99,14 @@
 							<label for="special_features">Special Features </label><select
 								name="special_features" class="form-control"
 								id="special_features">
-									<option value="Trailers">Trailers</option>
-									<option value="Commentaries">Commentaries</option>
-									<option value="Deleted Scenes">Deleted Scenes</option>
-									<option value="Behind the Scenes">Behind the Scenes</option>
+								<option value="Trailers">Trailers</option>
+								<option value="Commentaries">Commentaries</option>
+								<option value="Deleted Scenes">Deleted Scenes</option>
+								<option value="Behind the Scenes">Behind the Scenes</option>
 							</select>
 						</div>
 						<div class="col">
-							<label for="length">Film Length: <input name="length"
+							<label for="length">Film Length: <input name="length" class="form-control"
 								type="number" placeholder="Enter film length" value="120"></label>
 						</div>
 					</div>

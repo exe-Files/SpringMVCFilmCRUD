@@ -9,8 +9,8 @@
 </head>
 <body>
 <c:choose>
-	<c:when test="${not editedFilmResult}">
-		<h1>Film not edited, please choose a user-created film</h1>
+	<c:when test="${not editedFilm}">
+		<h1>Film not edited</h1>
 	</c:when>
 	<c:otherwise>
 		<h1>Film successfully edited.</h1>
