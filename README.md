@@ -30,11 +30,11 @@ This program presents a web page to a user, allowing them to search through a SQ
 ### Lessons Learned
 
 ##### Brandon F:
-- This was the first major project I've worked on in tandem with someone else, and it was a great experience.
-- It was interesting breaking apart a project and having someone to rely on throughout to be able to get input and suggestions from, as well as  keep things on track.  
-- I initially had trouble from this week's lecture, because a lot of the information felt foreign, and I couldn't wrap my mind around some of the technologies and material presented.
-- Taking the time to review and connect some of the ideas helped a lot, but diving into this project was where I gained the most value.
-- From creating command objects and understanding how the controller handles the presentation of webpages, to working more on dynamic webpages and having them communicate with a database, each part presented a challenge that helped me grow more as a developer.
-- Working on multiple files and having them communicate with each other is daunting at first, but focusing on one area helped bring things more to light.
-- It was interesting seeing the program work while abstracting parts of it, hoping that they would connect when ran.  
-- I would regularly have to stop and check to make sure things were working, or trust that the program would know what to do or give me the right output for troubleshooting. I still have many questions about the best practices of how to implement parts of the program to make things more concise, and there are still plenty of features I would love to learn how to implement, but given the timeframe, I've picked up a lot of useful tools and learned a lot from this project and I look forward to working on more in group settings. 
+This was the first major project I've worked on in tandem with someone else, and it was a great experience.
+It was interesting breaking apart a project and having someone to rely on throughout to be able to get input and suggestions from, as well as  keep things on track.  
+I initially had trouble from this week's lecture, because a lot of the information felt foreign, and I couldn't wrap my mind around some of the technologies and material presented.
+Taking the time to review and connect some of the ideas helped a lot, but diving into this project was where I gained the most value.
+From creating command objects and understanding how the controller handles the presentation of webpages, to working more on dynamic webpages and having them communicate with a database, each part presented a challenge that helped me grow more as a developer.
+Working on multiple files and having them communicate with each other is daunting at first, but focusing on one area helped bring things more to light.
+It was interesting seeing the program work while abstracting parts of it, hoping that they would connect when ran.  
+I would regularly have to stop and check to make sure things were working, or trust that the program would know what to do or give me the right output for troubleshooting. I still have many questions about the best practices of how to implement parts of the program to make things more concise, and there are still plenty of features I would love to learn how to implement, but given the timeframe, I've picked up a lot of useful tools and learned a lot from this project and I look forward to working on more in group settings. 
