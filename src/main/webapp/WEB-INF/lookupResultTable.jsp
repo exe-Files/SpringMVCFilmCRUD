@@ -52,13 +52,12 @@
 											data-bs-target="#f${userFilm.id}"
 											aria-controls="${userFilm.id}">See Details</button>
 
-										<div class="offcanvas offcanvas-top" tabindex="-1"
+										<div class="offcanvas offcanvas-top h-50" tabindex="-1"
 											id="f${userFilm.id}" aria-labelledby="offcanvasTopLabel">
 											<div class="offcanvas-header">
 
 												<h5 id="offcanvasTopLabel">
 													Edit:
-													<!-- NEED CONTROLLER INFO / VIEW FOR HREF  -->
 													<a aria-label="Edit" href="editFilm.do?editFilmId=${userFilm.id}&Keyword=${Keyword}&typeOfSearch=${typeOfSearch}" class="button bi bi-journal"></a>
 													<h2>${userFilm.title}</h2>
 												</h5>

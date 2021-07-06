@@ -103,7 +103,7 @@
 						<div class="col">
 							<label for="special_features">Special Features:</label> <select
 								name="special_features" class="form-control"
-								id="special_features">
+								id="special_features" multiple>
 								<option value="Trailers">Trailers</option>
 								<option value="Commentaries">Commentaries</option>
 								<option value="Deleted Scenes">Deleted Scenes</option>
