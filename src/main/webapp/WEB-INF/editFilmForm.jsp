@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
 
 <!DOCTYPE html>
@@ -56,8 +57,8 @@
 
 								<div>
 									<label for="release_year">Release Year:</label> <input
-										name="release_year" type="number" min="1900" max="2099"
-										step="1" value="1980" />
+										 name="release_year" type="number" value="${fn:substring(userFilm.release_year, 0, 4)}" min="1900" max="2099"
+										step="1"/>
 								</div>
 								<div>
 									<label for="rental_rate">Rental Rate:</label> <input

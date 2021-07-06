@@ -22,6 +22,7 @@ This program presents a web page to a user, allowing them to search through a SQ
 - When ran, the program will prompt the user for input based on how they would like to search the database of films.
 - Based on whether the user chooses to search based on the ID number or keyword, the program will request the appropriate search criteria from the SQL database.
 - From the list of films displayed, the user can choose to edit any film presented or delete the user-generated films
+- In order to edit your film you need to press the details button first then hit edit in the upper left hand corner.
 - If the user chooses to input a new film, they will be presented with a form to add information about it. Once submitted, this film will be added to the database and will be available in search.
 - Once finished, the user can return to the home menu and continue their search.
 - Voila, you're done!
@@ -39,4 +40,10 @@ Working on multiple files and having them communicate with each other is dauntin
 It was interesting seeing the program work while abstracting parts of it, hoping that they would connect when ran.
 I would regularly have to stop and check to make sure things were working, or trust that the program would know what to do or give me the right output for troubleshooting.   
 
-I still have many questions about the best practices of how to implement parts of the program to make things more concise, and there are still plenty of features I would love to learn how to implement, but given the timeframe, I've picked up a lot of useful tools and learned a lot from this project and I look forward to working on more in group settings. 
+I still have many questions about the best practices of how to implement parts of the program to make things more concise, and there are still plenty of features I would love to learn how to implement, but given the timeframe, I've picked up a lot of useful tools and learned a lot from this project and I look forward to working on more in group settings.
+
+### Brandon S:
+
+This project was a lot of fun though it was also a lot of work.  The largest challenge was communication on the parts to be worked on to resolve any conflicts.  The project really cemented the MVC and peak my interest in other patterns like MVP/MVVM to see the differences.  I learned the most in the project moving all the data around as properties to views.  As well as, passing properties to multiple views through use of redirects to allow people to return to previous searches.
+
+I really like how the project helped me to understand this last ~2 weeks of course material as it was all fuzzy leading into this. Working as a duo team was really stressful and somewhat challenging for me.  I like to cowboy up and just get things rolling but the team priority for me was for us both to learn and get experience for the future.  
